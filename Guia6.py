@@ -150,3 +150,127 @@ def sirve_pino(h: float) -> bool:
     return (res)
 
 print (sirve_pino(3)) 
+
+
+#EJERCICIO 5#
+
+def devolver_el_doble_si_es_par(numero: float):
+    if (numero % 2 == 0):
+        return (numero * 2)
+    else:
+        return (numero)
+    
+#print (devolver_el_doble_si_es_par (3))
+
+#5.2
+
+def devolver_valor_si_es_par_sino_el_que_sigue(numero: int):
+    if (numero % 2 == 0):
+        return (numero)
+    else:
+        return (numero + 1)
+
+#print (devolver_valor_si_es_par_sino_el_que_sigue(3))    
+
+#5.3
+
+def devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo9(numero: int):
+    if (numero % 9 == 0):
+        return (numero * 3)
+    else:
+        if (numero % 3 == 0):
+            return (numero * 2)
+        else:
+            return (numero)
+        
+#print (devolver_el_doble_si_es_multiplo3_el_triple_si_es_multiplo9(5))
+
+#5.4
+
+def lindo_nombre(nombre:str)->str:
+    if (len (nombre) >= 5 ):
+        return ("Tu nombre tiene muchas letras!")
+    else:
+        return ("Tu nombre tiene menos de 5 caracteres")
+
+#print (lindo_nombre ("tomas"))
+
+#5.5
+
+def elRango(numero: float) -> str:
+    if (numero > 20):
+        return ("Mayor a 20")
+    else:
+        if (10 <= numero <= 20):
+            return ("Entre 10 y 20")
+        else: 
+            if (numero < 5):
+                return ("Menor a 5")
+            
+#print (elRango (298))
+
+#5.6
+
+def vacaciones_o_trabajo(sexo: str , edad: int) -> str:
+    if ((sexo == "F" and 18 <= edad < 60) or (sexo == "M" and 18 <= edad < 65) ):
+        return ("Te toca trabajar")
+    else:
+        if ((sexo == "F" and edad >= 60) or (edad < 18) or (sexo == "M" and edad >= 65)):
+            return ("Anda de vacaciones")
+
+#print (vacaciones_o_trabajo ("M" , 65))
+
+#EJERCICIO 6
+
+#6.2
+
+def pares_del_10_al_40():
+    n: int = 10
+    while (10 <= n <= 40):
+        if (n % 2 == 0):
+          print (n)
+        
+        n+=1
+
+    return 
+        
+#pares_del_10_al_40()
+
+#6.3
+
+def eco():
+    i=1
+    while (i <= 10):
+        print("eco")
+        i+=1
+    return
+
+#eco()
+
+#6.4
+
+def cuenta_regresiva(numero: int):
+    while (numero >= 1):
+           print(numero)
+           if (numero == 1):
+               print ("Despegue")
+           numero-=1       
+    
+    return    
+
+#cuenta_regresiva (10)
+
+#6.5
+
+def viaje_en_el_tiempo(p: int , l: int):
+    while (p != l):
+        print ("Viajó un año al pasado, estamos en el año:", p-1)
+        p-=1
+    return
+
+#viaje_en_el_tiempo(2024 , 2004)
+
+
+
+         
+
