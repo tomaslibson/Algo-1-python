@@ -54,7 +54,7 @@ def ordenados (s: int) -> bool:
         e+=1
     return res
 
-#print (ordenados ([1,10,198,2000,111111111,0]))       
+#print (ordenados ([1,10,198,2000,111111111]))       
 
 #1.5
 
@@ -282,11 +282,84 @@ def nombres_estudiantes() -> list:
 #print(nombres_estudiantes())
 
 #4.2
+""" 
+def sube()->list:
+    x = False
+
+    while not x:
+        cargar = ("C", 0)
+        descontar = ("D",0)
+        accion = input("Cargar (C) / Descontar (D) / Finalizar (X): ")
+        
+        if accion == "C":
+           monto = input("ingrese monto: ")
+           cargar = ("C", monto)
+
+        elif accion == "D" : 
+            monto = input("ingrese monto: ")
+            descontar = ("D", monto)
+        
+        elif accion == "X":
+            x = True
+
+       
+    res = ("Saldo", cargar[1] - descontar[1])  
+    return res
+ """
+
+##EJERCICIO 5
+
+def pertenece_a_cada_uno_version_1(s: list , e:int)-> list:
+    i = 0
+    res = []
+    while i < len(s):    
+        if e in s[i]:
+            res.append(True)
+            
+        else:
+            res.append(False)
+        
+        i+=1
+    return res
+      
+    
+
+#print (pertenece_a_cada_uno_version_1 ( [[2],[2,3223,4,234,23],[2,2,3,4,23,34,45,3]], 23 )  )
 
 
+#5.3
 
+def es_matriz(s: list) -> bool:
+    res = True
+    i = 0
+    primera = len(s[0])
 
+    while i < len(s):
+        if len(s[i]) == 0:
+            res = False
+        elif len(s[i]) != primera:
+            res = False
 
-print (tiene_minuscula("123Ar2565y"))
-print (tiene_mayus ("123Ar2565y"))
-print (tiene_numero("123Ar2565y"))
+        i+=1
+    return res
+
+#print ( es_matriz (  [[1,2],[332,2]]  ) )
+
+#5.4
+
+def filas_ordenadas(m: list) -> bool:
+    i = 0
+    res = True
+
+    while i < len(m):
+        if ordenados(m[i]) == False:
+            res = False
+        
+        i+=1
+    return res
+
+#print ( filas_ordenadas ( [[1,2,3,4,5,6],[24,25,40,41,42,789]] ) )
+#print ( filas_ordenadas ( [[1,2,3,4,5,6],[24,25,46,41,42,789]] ) )
+
+##EJERCICIO 5
+
