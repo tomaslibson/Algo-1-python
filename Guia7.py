@@ -282,30 +282,24 @@ def nombres_estudiantes() -> list:
 #print(nombres_estudiantes())
 
 #4.2
-""" 
+
 def sube()->list:
     x = False
-
+    res = []
     while not x:
-        cargar = ("C", 0)
-        descontar = ("D",0)
         accion = input("Cargar (C) / Descontar (D) / Finalizar (X): ")
-        
-        if accion == "C":
-           monto = input("ingrese monto: ")
-           cargar = ("C", monto)
-
-        elif accion == "D" : 
-            monto = input("ingrese monto: ")
-            descontar = ("D", monto)
-        
-        elif accion == "X":
+        if accion == "X":
             x = True
-
-       
-    res = ("Saldo", cargar[1] - descontar[1])  
+        elif accion == "C":
+            monto = int (input("Ingrese el monto: "))
+            res.append((accion,monto))
+        elif accion == "D":
+            monto = int (input("Ingrese el monto: "))
+            res.append((accion, monto))
     return res
- """
+
+print(sube())       
+ 
 
 ##EJERCICIO 5
 
