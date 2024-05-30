@@ -110,3 +110,34 @@ def agregar_frase_al_principio(archivo: str, frase:str):
 
 ##EJERCICIO 6
 
+def listar_palabras_de_archivo(archivo:str) -> list:
+    permitidas = ["-","1","2","3","4","5","6","7",
+                  "8","9","0","a","b","c","d","e","f","g","h","i","j","k", "l",
+                    "m","n" ,"ñ", "o","p","q","r","s","t","u","v","w","x","y","z",
+                      "A", "B", "C" , "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
+                      "N" ,"Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+    archivo = open("test.zip", "rb")
+    bytes = archivo.read()
+    archivo.close()
+    palabras = []
+    palabra = ""
+    
+    for b in bytes:
+        char = chr(b)
+        if char in permitidas:   
+            palabra+= char
+        elif (char == " ") and (len(palabra) < 5):
+            palabra = ""
+        elif ((char == " ") or (char == "\n" )) and (len(palabra) >= 5):
+            palabras.append(palabra)
+            palabra = ""
+
+    return palabras
+    
+
+
+print( listar_palabras_de_archivo ("test.zip"))
+
+##EJERCICIO 7
+
