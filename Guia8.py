@@ -132,12 +132,14 @@ def listar_palabras_de_archivo(archivo:str) -> list:
         elif ((char == " ") or (char == "\n" )) and (len(palabra) >= 5):
             palabras.append(palabra)
             palabra = ""
+##falta que te duevuleva la ultima palabra
 
     return palabras
     
 
 
-print( listar_palabras_de_archivo ("test.zip"))
+#print( listar_palabras_de_archivo ("test.zip"))
 
 ##EJERCICIO 7
 
+##def calcular_promedio_por_estudiante(notas:str, promedios:str):
