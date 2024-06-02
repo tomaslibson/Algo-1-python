@@ -143,3 +143,84 @@ def listar_palabras_de_archivo(archivo:str) -> list:
 ##EJERCICIO 7
 
 ##def calcular_promedio_por_estudiante(notas:str, promedios:str):
+
+######PILAS#######
+
+#EJERCICIO 8
+from queue import LifoQueue as Pila
+import random
+
+
+def generar_numero_al_azar(cantidad:int, desde:int,hasta:int) -> Pila[int]:
+    p = Pila()
+    
+    for i in range(cantidad):
+        p.put(random.randint(desde,hasta))
+        
+        
+    return imprimirPila(p)
+
+def imprimirPila(Pila):
+    res = []
+    while not (Pila.empty()):
+        res.append(Pila.get())
+    
+    return res
+
+
+#print( generar_numero_al_azar (6, 1,100) )
+
+#EJERCICIO 9
+
+def cantidad_elementos(p: Pila) -> int:
+    res = len(pila_a_lista(p))
+    return res
+
+def pila_a_lista(p: Pila) -> list:
+    lista = []
+    while not (p.empty()):
+        lista.append(p.get())
+    return lista
+
+miPila: Pila = Pila()
+miPila.put(5)
+miPila.put(5)
+miPila.put(5)
+miPila.put(5)
+miPila.put(5)
+miPila.put("seis")
+#print(cantidad_elementos(miPila))
+
+#EJERCICIO 10
+
+def bucar_el_maximo(p: Pila[int]) -> int:
+   #lista = pila_a_lista(p)
+    i = 0
+    res = 0
+     
+    while not (p.empty()):
+        i = p.get()
+        if i > res:
+            res = i
+    """  while i < len(lista):
+        if res < lista[i]:
+            res = lista[i]
+
+        i+=1            
+    return res """
+    return res
+    
+
+miPInt = Pila()
+miPInt.put(1)
+miPInt.put(5)
+miPInt.put(167)
+miPInt.put(0)
+
+#print(bucar_el_maximo(miPInt))
+
+#EJERCICIO 11
+
+
+
+
