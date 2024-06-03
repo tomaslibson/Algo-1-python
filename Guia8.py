@@ -222,5 +222,140 @@ miPInt.put(0)
 #EJERCICIO 11
 
 
+def esta_bien_balanceada(formula: str) -> bool:
+    parentesis = Pila()
+    res = True
+
+    for caracteres in formula:
+        if caracteres == '(':
+            parentesis.put('(')
+        elif caracteres == ')' and parentesis.empty():
+            res = False
+    return res
+
+
+#print (esta_bien_balanceada ( "1 + ) 2 x 3 ( ( )" ))
+#print (esta_bien_balanceada( "1 + ( 2 x 3 = ( 2 0 / 5 ) ) 10 * ( 1 + ( 2 * ( =1)))"))
+
+#EJERCICIO 12
+
+def evaluar_expresion(s: str) -> float:
+    num = Pila()
+    op = Pila()
+    operandos = ['+', '-', '*' , '/']
+
+    i = 0 
+
+    while i < len(s):
+        if s[i] not in operandos and s[i] != ' ':
+            num.put(float(s[i]))
+        elif s[i] == operandos[0]:
+            scnd = num.get()
+            frst = num.get()
+            num.put(frst + scnd)
+        elif s[i] == operandos[1]:
+            scnd = num.get()
+            frst = num.get()
+            num.put(frst - scnd)
+        elif s[i] == operandos[2]:
+            scnd = num.get()
+            frst = num.get()
+            num.put(frst * scnd)
+        elif s[i] == operandos[3]:
+            scnd = num.get()
+            frst = num.get()
+            num.put(frst / scnd)
+
+        i+=1
+    return num.get()
+
+
+    
+#print (evaluar_expresion ("3 4 + 5 * 2 -"))
+#print (evaluar_expresion (" 7 7 * 1 +"))
+
+
+###########COLAS##################
+
+#EJERCICIO 13
+
+from queue import Queue as Cola
+
+def generar_nros_al_azar(cantidad: int , desde: int, hasta: int) -> Cola[int]:
+    c = Cola()
+
+    while cantidad > 0:
+        c.put(random.randint(desde, hasta))
+        cantidad-=1
+    return imprimirCola(c)
+
+def imprimirCola(Cola):
+    res = []
+    while not (Cola.empty()):
+        res.insert(0,Cola.get())
+    
+    return res
+
+#print(generar_nros_al_azar(5,1,100))
+
+#EJERCICIO 14
+
+def cantidad_elementos(c: Cola):
+    p = Cola()
+    res = 0
+    while not c.empty():
+        p.put(c.get())
+        res+=1
+    return res
+
+miCola = Cola()
+miCola.put(1)
+miCola.put(1)
+miCola.put(1)
+miCola.put(1)
+miCola.put(5)
+
+#print (cantidad_elementos(miCola))
+
+#EJERCICIO 15
+
+def buscar_el_maximo(c: Cola[int]) -> int:
+    res = 0
+
+    while not c.empty():
+        i = c.get()
+        if i > res:
+            res = i 
+    return res
+
+tuCola = Cola()
+tuCola.put(3)
+tuCola.put(33)
+tuCola.put(1384)
+tuCola.put(1384)
+
+
+#print(buscar_el_maximo(tuCola))
+
+#EJERCICIO 16
+"1"
+def armar_secuencia_de_bingo() -> Cola[int]:
+    c = Cola()
+
+    i= 12
+
+    while i > 0:
+        c.put(random.randint(0,99))
+        i-=1
+    return imprimirCola(c)
+
+#print(armar_secuencia_de_bingo())
+
+"2"
+
+
+
+
+
 
 
