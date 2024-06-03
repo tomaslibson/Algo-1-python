@@ -352,7 +352,61 @@ def armar_secuencia_de_bingo() -> Cola[int]:
 #print(armar_secuencia_de_bingo())
 
 "2"
+def pertenece(s: list[int], n: int) -> bool:
+    res = False
+    i = 0
 
+    while i < len(s):
+        if s[i] == n: 
+         res = True
+
+        i+=1
+    return res  
+
+  
+def jugar_carton_de_bingo(carton: list[int], bolillero: Cola[int]) -> int:
+
+    res = 0
+
+    while carton != []:
+        bolilla = bolillero.get()
+        if pertenece(carton, bolilla) == True:
+            carton.remove(bolilla)
+        
+        res+=1
+    return res
+
+
+
+def generar_bolillero() -> Cola[int]:
+    c = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+         , 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+           24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+             37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61,
+               62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+    
+    bolillero = Cola()
+    
+    x = 99
+    while c != []:
+        i = (random.randint(0,x))
+        bolillero.put(c[i])
+        c.remove(c[i]) 
+        x-=1
+    return bolillero
+
+#print(generar_bolillero())
+#print (cantidad_elementos(generar_bolillero()))
+
+b1 = generar_bolillero()
+
+a1 = [1,2,3,4,5,6,7,8,9,10,11,12]
+a2 = [98, 84, 4, 8, 62, 91, 11, 61, 29, 48, 81, 36]
+a3 = [56, 46, 23, 45, 55, 77, 88, 98, 2, 0, 12, 27, 34]
+
+print(jugar_carton_de_bingo(a1,b1))
+#print(jugar_carton_de_bingo(a2,b1))
+#print(jugar_carton_de_bingo(a3,b1))
 
 
 
