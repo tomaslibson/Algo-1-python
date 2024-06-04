@@ -1,4 +1,9 @@
 import math
+from queue import Queue as Cola
+from queue import LifoQueue as Pila
+import random
+
+
 
 ##EJERCICIO 1
 
@@ -147,9 +152,6 @@ def listar_palabras_de_archivo(archivo:str) -> list:
 ######PILAS#######
 
 #EJERCICIO 8
-from queue import LifoQueue as Pila
-import random
-
 
 def generar_numero_al_azar(cantidad:int, desde:int,hasta:int) -> Pila[int]:
     p = Pila()
@@ -160,15 +162,20 @@ def generar_numero_al_azar(cantidad:int, desde:int,hasta:int) -> Pila[int]:
         
     return imprimirPila(p)
 
-def imprimirPila(Pila):
+def imprimirPila(p: Pila):
     res = []
-    while not (Pila.empty()):
-        res.append(Pila.get())
-    
+    c = Pila()
+    while not (p.empty()):
+        i = p.get()
+        res.append(i)
+        c.put(i)
+    while not c.empty():
+        p.put(c.get())
     return res
 
 
 #print( generar_numero_al_azar (6, 1,100) )
+
 
 #EJERCICIO 9
 
@@ -190,6 +197,7 @@ miPila.put(5)
 miPila.put(5)
 miPila.put("seis")
 #print(cantidad_elementos(miPila))
+
 
 #EJERCICIO 10
 
@@ -279,7 +287,7 @@ def evaluar_expresion(s: str) -> float:
 
 #EJERCICIO 13
 
-from queue import Queue as Cola
+
 
 def generar_nros_al_azar(cantidad: int , desde: int, hasta: int) -> Cola[int]:
     c = Cola()
@@ -289,10 +297,16 @@ def generar_nros_al_azar(cantidad: int , desde: int, hasta: int) -> Cola[int]:
         cantidad-=1
     return imprimirCola(c)
 
-def imprimirCola(Cola):
+def imprimirCola(s: Cola):
+    c = Cola()
     res = []
-    while not (Cola.empty()):
-        res.insert(0,Cola.get())
+    while not (s.empty()):
+        w = s.get()
+        res.insert(0,w)
+        c.put(w)
+    while not c.empty():
+        i = c.get()
+        s.put(i)
     
     return res
 
@@ -306,6 +320,8 @@ def cantidad_elementos(c: Cola):
     while not c.empty():
         p.put(c.get())
         res+=1
+    while not p.empty():
+        c.put(p.get())
     return res
 
 miCola = Cola()
@@ -317,15 +333,24 @@ miCola.put(5)
 
 #print (cantidad_elementos(miCola))
 
+
+
 #EJERCICIO 15
 
 def buscar_el_maximo(c: Cola[int]) -> int:
     res = 0
-
+    
+    p = Pila()
     while not c.empty():
         i = c.get()
         if i > res:
-            res = i 
+            res = i
+  
+        p.put(i)
+    while not p.empty():
+            w = p.get()
+            c.put(w)
+
     return res
 
 tuCola = Cola()
@@ -335,6 +360,7 @@ tuCola.put(1384)
 tuCola.put(1384)
 
 
+#print(buscar_el_maximo(tuCola))
 #print(buscar_el_maximo(tuCola))
 
 #EJERCICIO 16
@@ -366,14 +392,23 @@ def pertenece(s: list[int], n: int) -> bool:
   
 def jugar_carton_de_bingo(carton: list[int], bolillero: Cola[int]) -> int:
 
-    res = 0
-
-    while carton != []:
+    res = 1
+    c = Cola()
+    papel = []
+    while not bolillero.empty() :
         bolilla = bolillero.get()
         if pertenece(carton, bolilla) == True:
             carton.remove(bolilla)
+            papel.append(bolilla)
+        if len(carton) != 0:
+            res+=1
         
-        res+=1
+        c.put(bolilla)
+    while not c.empty():
+        w = c.get()
+        bolillero.put(w)
+    while not papel == []:
+        carton.append(papel.pop(0))
     return res
 
 
@@ -398,14 +433,20 @@ def generar_bolillero() -> Cola[int]:
 #print(generar_bolillero())
 #print (cantidad_elementos(generar_bolillero()))
 
-b1 = generar_bolillero()
+miBolillero = Cola()
+miBolillero.put(1)
+miBolillero.put(2)
+miBolillero.put(3)
+miBolillero.put(4)
+miBolillero.put(5)
 
-a1 = [1,2,3,4,5,6,7,8,9,10,11,12]
-a2 = [98, 84, 4, 8, 62, 91, 11, 61, 29, 48, 81, 36]
-a3 = [56, 46, 23, 45, 55, 77, 88, 98, 2, 0, 12, 27, 34]
+a1 = [2,4]
+a2= [1,5]
 
-print(jugar_carton_de_bingo(a1,b1))
-#print(jugar_carton_de_bingo(a2,b1))
+
+#print(imprimirCola(b1))
+#print(jugar_carton_de_bingo(a1,miBolillero))
+#print(jugar_carton_de_bingo(a2,miBolillero))
 #print(jugar_carton_de_bingo(a3,b1))
 
 
