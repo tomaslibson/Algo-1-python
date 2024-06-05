@@ -451,6 +451,97 @@ a2= [1,5]
 
 
 
+###EJERCICIO 17
+
+def n_pacientes_urgentes(c: Cola [(int,str,str)]) -> int:
+    res = 0
+    s = Cola()
+
+    while not c.empty():
+        x = c.get()
+        if x[0] in [1,2,3]:
+            res+=1
+
+        s.put(x)    
+    while not s.empty():
+        c.put(s.get())
+    return res
+
+pacientes = Cola()
+pacientes.put((1,"leo","cocina"))
+pacientes.put((6,"fwqefwo","cocina"))
+pacientes.put((2,"lefw","cocina"))
+pacientes.put((6,"rgwrg","cocina"))
+pacientes.put((2,"lfh","cocina"))
+pacientes.put((10,"lasd","cocina"))
+pacientes.put((9,"asd","cocina"))
+
+#print(n_pacientes_urgentes(pacientes))
+
+
+#EJERCICIO 18
+
+def tipo_de_cliente() -> list[str, int, bool, bool]:
+    res = []
+    res.append(input("Nombre y Apellido: "))
+    res.append(input("DNI: "))
+    
+    preferencial = input("cuenta preferencial (si/no): ")
+    if preferencial == "si":
+        res.append(True)
+    elif preferencial == "no":
+        res.append(False)
+
+    prioridad = input("Es mayor de 65, embarazada o movilidad reducida (si/no): ")
+    if prioridad == "si":
+        res.append(True)
+    elif prioridad == "no":
+        res.append(False)
+
+    
+    return res
+
+def atencion_a_cliente(c: Cola[str, int, bool, bool]) -> Cola[str, int, bool, bool]:
+    segunda = Cola()
+    tercera = Cola()
+    res = Cola()
+    c2 = Cola()
+    while not c.empty():
+        cliente = c.get()
+        if cliente[3] == True:
+            res.put(cliente)
+        else:
+            segunda.put(cliente)
+
+        c2.put(cliente)   
+
+    while not segunda.empty():
+        cliente2 = segunda.get()
+        if cliente2[2] == True:
+            res.put(cliente2)
+        else:
+            tercera.put(cliente2)
+    
+    while not tercera.empty():
+        res.put(tercera.get())
+
+    while not c2.empty():
+        c.put(c2.get())
+    
+    return res
+
+laFila = Cola()
+laFila.put(("1", 123415454, True, True))
+laFila.put(("5", 123415454, False, False))
+laFila.put(("3", 123415454, True, False))
+laFila.put(("4", 123415454, True, False))
+laFila.put(("2", 123415454, True, True))
 
 
 
+#print(imprimirCola(atencion_a_cliente(laFila)))
+#print(imprimirCola(laFila))
+
+######DICCIONARIOS################
+
+#EJERCICIO 19
