@@ -630,7 +630,7 @@ def la_palabra_mas_frecuente(archivo: str) -> str:
 historiales = {}
 
 
-#1
+#2
 def visitar_sitio(hitoriales: dict[str, Pila[str]], usuario: str, sitio:str):
 
     if usuario in historiales:
@@ -646,17 +646,18 @@ def visitar_sitio(hitoriales: dict[str, Pila[str]], usuario: str, sitio:str):
 # visitar_sitio(historiales, "tomi" , "iggg")
 # visitar_sitio(historiales, "soyuntarado" , "la trote en hd")
 
-t = historiales["tomi"]
-a = historiales["alfre"]
-s = historiales["soyuntarado"]
 
-#print(imprimirPila(t))
+# t = historiales["tomi"]
+# a = historiales["alfre"]
+# s = historiales["soyuntarado"]
+
+# print(imprimirPila(t))
 # print(imprimirPila(a))
 # print(imprimirPila(s))
 
 
 
-#2
+#3
 
 def navegar_atras(historiales: dict[str, Pila[str]],usuario: str):
     ultimo = historiales[usuario].get()
@@ -669,3 +670,52 @@ def navegar_atras(historiales: dict[str, Pila[str]],usuario: str):
 
 #navegar_atras(historiales, "tomi")
 #print(imprimirPila(t))
+
+#EJERCICIO 23
+inventario = {}
+
+
+def agregar_producto(inventario: dict, nombre: str, precio: float, cantidad: int):
+    producto = {}
+    producto["Precio"] = precio
+    producto["Cantidad"] = cantidad
+
+    inventario[nombre] = producto
+
+
+# agregar_producto(inventario, "Cartera", 69.99, 15)
+# agregar_producto(inventario, "Ojotas", 6.99, 1300)
+# print(inventario)
+
+def actualizar_stock(inventario: dict, nombre: str, cantidad: int):
+    
+    prod = inventario[nombre]
+    prod["Cantidad"] = cantidad
+
+
+# actualizar_stock(inventario, "Cartera", 7)
+# actualizar_stock(inventario, "Ojotas", 10)
+# print(inventario)
+
+def actualizar_precios(inventario: dict, nombre: str, precio: float):
+    prod = inventario[nombre]
+    prod["Precio"] = precio
+
+# actualizar_precios(inventario, "Cartera", 2)
+# actualizar_precios(inventario, "Ojotas", 1)
+
+
+# print(inventario)
+
+def calcular_valor_inventario(inventario: dict ) -> float:
+    res = 0
+   
+    productos = inventario.keys()
+
+    for k in productos:
+        l = list(inventario[k].values())
+        res+= l[0] * l[1]
+    
+    return res
+    
+# print(calcular_valor_inventario(inventario))   
