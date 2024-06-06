@@ -147,7 +147,17 @@ def listar_palabras_de_archivo(archivo:str) -> list:
 
 ##EJERCICIO 7
 
-##def calcular_promedio_por_estudiante(notas:str, promedios:str):
+def calcular_promedio_por_estudiante(notas:str, promedios:str):
+    file_notas = open(notas,"r")
+    
+
+
+
+
+
+
+
+
 
 ######PILAS#######
 
@@ -664,12 +674,13 @@ def navegar_atras(historiales: dict[str, Pila[str]],usuario: str):
     n = historiales[usuario].get()
 
     historiales[usuario].put(n)
-    historiales[usuario].put(ultimo)
-    historiales[usuario].put(n)
+    
 
 
-#navegar_atras(historiales, "tomi")
-#print(imprimirPila(t))
+# navegar_atras(historiales, "tomi")
+# navegar_atras(historiales, "tomi")
+# print(imprimirPila(t))
+
 
 #EJERCICIO 23
 inventario = {}
