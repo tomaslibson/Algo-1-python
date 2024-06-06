@@ -545,3 +545,127 @@ laFila.put(("2", 123415454, True, True))
 ######DICCIONARIOS################
 
 #EJERCICIO 19
+def im_not_split(content:str) -> list[str]:
+    res = []
+    i = 0
+    palabra = ""
+
+
+    while i < len(content):
+        if content[i] == " " or content[i] == "\n":
+            if palabra != "":
+                res.append(palabra)
+                palabra = ""
+            
+        else: 
+            palabra+= content[i]
+        
+        i+=1
+    if i == len(content):
+        res.append(palabra)
+    return res
+
+
+def agrupar_por_longitud(archivo:str) -> dict:
+    file = open(archivo, "r")
+    texto = file.readlines()
+    palabras = []
+    i = 0
+    diccionario = {} 
+
+    while i < len(texto):
+        palabras.append(im_not_split(texto[i]))
+        i+=1
+    for x in palabras:
+        for n in x:
+            l = len(n)
+            if l in diccionario:
+                diccionario[l] += 1
+            else:
+                diccionario[l] = 1 
+
+    file.close()          
+    return diccionario
+
+# print(agrupar_por_longitud("diccionarios.txt"))
+
+####### EJERCICIO 21
+ 
+def la_palabra_mas_frecuente(archivo: str) -> str:
+    file = open(archivo, "r")
+    texto = file.readlines()
+    palabras = []
+    i = 0
+    diccionario = {} 
+    max = 0
+    valor = "" 
+    res = ""
+    while i < len(texto):
+        palabras.append(im_not_split(texto[i]))
+        i+=1
+    for n in palabras:
+        for x in n:
+            if x in diccionario:
+                diccionario[x] += 1
+            else:
+                diccionario[x] = 1
+    
+    valores = diccionario.values()         
+    for valor in valores:
+        if valor > max:
+            max = valor
+    for n in diccionario.items():
+        if n[1] == max:
+            res+= n[0]
+            res+= ","
+    file.close()
+    return res        
+             
+
+# print(la_palabra_mas_frecuente("diccionarios.txt"))
+
+
+##EJERICICIO 22
+
+historiales = {}
+
+
+#1
+def visitar_sitio(hitoriales: dict[str, Pila[str]], usuario: str, sitio:str):
+
+    if usuario in historiales:
+            historiales[usuario].put(sitio)
+    else: 
+            userPila = Pila()
+            historiales[usuario] = userPila
+            userPila.put(sitio)  
+
+# visitar_sitio(historiales, "tomi" , "plm")
+# visitar_sitio(historiales, "alfre" , "comodo.com")
+# visitar_sitio(historiales, "tomi" , "youtube")
+# visitar_sitio(historiales, "tomi" , "iggg")
+# visitar_sitio(historiales, "soyuntarado" , "la trote en hd")
+
+t = historiales["tomi"]
+a = historiales["alfre"]
+s = historiales["soyuntarado"]
+
+#print(imprimirPila(t))
+# print(imprimirPila(a))
+# print(imprimirPila(s))
+
+
+
+#2
+
+def navegar_atras(historiales: dict[str, Pila[str]],usuario: str):
+    ultimo = historiales[usuario].get()
+    n = historiales[usuario].get()
+
+    historiales[usuario].put(n)
+    historiales[usuario].put(ultimo)
+    historiales[usuario].put(n)
+
+
+#navegar_atras(historiales, "tomi")
+#print(imprimirPila(t))
