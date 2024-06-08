@@ -298,7 +298,7 @@ def sube()->list:
             res.append((accion, monto))
     return res
 
-print(sube())       
+#print(sube())       
  
 
 ##EJERCICIO 5
@@ -352,8 +352,8 @@ def filas_ordenadas(m: list) -> bool:
         i+=1
     return res
 
-#print ( filas_ordenadas ( [[1,2,3,4,5,6],[24,25,40,41,42,789]] ) )
-#print ( filas_ordenadas ( [[1,2,3,4,5,6],[24,25,46,41,42,789]] ) )
+# print ( filas_ordenadas ( [[1,2,3,4,5,6],[24,25,40,41,42,789]] ) )
+# print ( filas_ordenadas ( [[1,2,3,4,5,6],[24,25,46,41,42,789]] ) )
 
 ##EJERCICIO 5
 

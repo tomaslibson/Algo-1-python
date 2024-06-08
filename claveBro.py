@@ -72,9 +72,9 @@ def im_not_split(content:str) -> list[str]:
         res.append(palabra)
     return res
 
-l = im_not_split("hola como estas \n me llamo tomi")
+# l = im_not_split("hola como estas \n me llamo tomi")
 
-print (im_not_split("hola como estas \n me llamo tomi"))
-print (len(im_not_split("hola como estas \n me llamo tomi")))
-print(l[5])
+# print (im_not_split("hola como estas \n me llamo tomi"))
+# print (len(im_not_split("hola como estas \n me llamo tomi")))
+# print(l[5])
 

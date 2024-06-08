@@ -549,8 +549,9 @@ laFila.put(("2", 123415454, True, True))
 
 
 
-#print(imprimirCola(atencion_a_cliente(laFila)))
-#print(imprimirCola(laFila))
+# print(imprimirCola(atencion_a_cliente(laFila)))
+# print(imprimirCola(atencion_a_cliente(laFila)))
+# print(imprimirCola(laFila))
 
 ######DICCIONARIOS################
 
