@@ -94,8 +94,8 @@ def valores_extremos(s: dict) -> dict:
     for empresa in s.keys():
         res[empresa] = ()
         valoresempresa = []
-        for tuplas in s[empresa]:
-                 valoresempresa.append(tuplas[1])
+        for (dia, temperatura) in s[empresa]:
+                 valoresempresa.append(temperatura)
                  res[empresa] = (devulevemin(valoresempresa), devulevemax(valoresempresa))
     return res
 
