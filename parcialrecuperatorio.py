@@ -100,4 +100,5 @@ def valores_extremos(s: dict) -> dict:
     return res
 
 l = {"YPF" : [(1,10),(15, 6), (31,100)], "ALUA" : [(1,3), (20, 50), (31,30)]}
+
 print(valores_extremos(l))

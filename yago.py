@@ -49,8 +49,8 @@ fila.put(("o","vip"))
 fila.put(("m","vip"))
 fila.put(("tomi","vip"))
 
-# print(imprimirCola(reordenar_cola_priorizando_vips(fila)))
-# print(imprimirCola(reordenar_cola_priorizando_vips(fila)))
+print(imprimirCola(reordenar_cola_priorizando_vips(fila)))
+print(reordenar_cola_priorizando_vips(fila).queue)
 
 #ejercicio 2
 
